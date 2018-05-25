@@ -5,7 +5,6 @@ const apiKeys = () => {
   return new Promise((resolve, reject) => {
     $.ajax('/db/apiKeys.json')
       .done((data) => {
-        console.log(data);
         resolve(data.apiKeys.weather);
       })
       .fail((err) => {
