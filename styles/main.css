@@ -3,5 +3,5 @@ body {
   background-color:
   #43596d;
   background-image: URL(https://c1.staticflickr.com/1/305/19515856459_9df46fea0b_b.jpg);
-  background-size: cover;
+  width: 100%;
 }
