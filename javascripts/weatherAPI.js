@@ -4,7 +4,6 @@ let weatherKey = '';
 
 const setKey = (key) => {
   weatherKey = key;
-  console.log(key);
 };
 
 const showResults = (zipNum) => {
