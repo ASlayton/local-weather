@@ -11,7 +11,13 @@ const createTile = (data) => {
   myString +=   `<div class="caption">`;
   myString +=     `<h3>${data.name}</h3>`;
   myString +=     `<p>${data.weather[0].main}</p>`;
-  myString +=     `<p>Temperature: ${myTemp}</p>`;
+
+  if ($('#toggle-one').prop('checked')) {
+    myString +=     `<p>Temperature: <span id="currentTemp" class="farenheit">${myTemp}</span>&degF;</p>`;
+  } else {
+    myString +=     `<p>Temperature: <span id="currentTemp" class="celsius">${myTemp}</span>&degC;</p>`;
+  };
+
   myString +=     `<p>Pressure: ${data.main.pressure}</p>`;
   myString +=     `<p>Wind Speed: ${data.wind.speed}</p>`;
   myString +=     `<a>View 5 day forcast</a>`;
