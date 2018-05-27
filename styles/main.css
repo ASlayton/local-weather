@@ -1,7 +1,10 @@
 body {
+  background: url(https://www.maxpixel.net/static/photo/1x/Meteorology-Cumulonimbus-Storm-Hunting-Thunderstorm-3196008.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   color: white;
   background-color:
   #43596d;
-  background-image: URL(https://c1.staticflickr.com/1/305/19515856459_9df46fea0b_b.jpg);
-  width: 100%;
 }

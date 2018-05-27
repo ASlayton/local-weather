@@ -6,6 +6,10 @@ const setKey = (key) => {
   weatherKey = key;
 };
 
+const getKey = () => {
+  return weatherKey;
+};
+
 const showResults = (zipNum) => {
   searchWeather(zipNum)
     .then((result) => {
@@ -31,4 +35,5 @@ const searchWeather = (txt) => {
 module.exports = {
   showResults,
   setKey,
+  getKey,
 };
