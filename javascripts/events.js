@@ -1,5 +1,6 @@
 const zipValidator = require('./zipcode');
 const convert = require('./convert');
+const fiveDay = require('./fiveDay');
 
 const initEvents = () => {
   $('#toggle-one').bootstrapToggle({
@@ -9,8 +10,14 @@ const initEvents = () => {
   $('#toggle-one').change(() => {
     convert.convertExisting();
   });
-  $('#go-btn').on('click', zipValidator);
   $('#zip-input').on('keypress', keyTest);
+  $('body').on('click', (e) => {
+    if (e.target.id === 'go-btn') {
+      zipValidator();
+    } else if (e.target.id === 'extended-forcast-link') {
+      fiveDay.showMoreResults($('#zip-input').val());
+    };
+  });
 };
 
 const keyTest = (e) => {
