@@ -1,6 +1,7 @@
 const zipValidator = require('./zipcode');
 const convert = require('./convert');
 const fiveDay = require('./fiveDay');
+const threeDay = require('./threeDay');
 
 const initEvents = () => {
   $('#toggle-one').bootstrapToggle({
@@ -16,6 +17,12 @@ const initEvents = () => {
       zipValidator();
     } else if (e.target.id === 'extended-forcast-link') {
       fiveDay.showMoreResults($('#zip-input').val());
+      $('#extended-forcast-link').hide();
+      $('#extended-3day-link').hide();
+    } else if (e.target.id === 'extended-3day-link') {
+      threeDay.showMoreResults($('#zip-input').val());
+      $('#extended-forcast-link').hide();
+      $('#extended-3day-link').hide();
     };
   });
 };
