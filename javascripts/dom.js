@@ -9,7 +9,7 @@ const createTile = (data) => {
   myString += `<div class="col-sm-2 col-md-2">`;
   myString += `<div class="thumbnail">`;
   myString +=   `<img src="https://openweathermap.org/img/w/${weatherIcon}.png" alt="${data.weather[0].main}">`;
-  myString +=   `<button type="button" class="btn btn-default btn-lg">
+  myString +=   `<button type="button" class="btn btn-default btn-lg scary-btn" title="Too scary for me">
   <img src="/images/scared.png" class="scared-icon"></button>`;
   myString +=   `<div class="caption">`;
   myString +=     `<h3>${data.name}</h3>`;
@@ -26,8 +26,6 @@ const createTile = (data) => {
   myString +=       `<p>Humidity: ${data.main.humidity}%</p>`;
   myString +=     `<p>Pressure: ${data.main.pressure} hPa</p>`;
   myString +=     `<p>Wind Speed: ${data.wind.speed} meters/sec</p>`;
-  myString +=     `<button id="extended-3day-link">View 3 day forcast</button>`;
-  myString +=     `<button id="extended-forcast-link">View 5 day forcast</button>`;
   myString +=   `</div>`;
   myString += `</div>`;
   myString += `</div>`;
@@ -36,7 +34,7 @@ const createTile = (data) => {
 };
 
 const printToDom = (dataString) => {
-  $('#weather-display-container').html(dataString);
+  $('#current-weather-container').html(dataString);
 };
 
 module.exports = {
