@@ -37,6 +37,17 @@ const keyTest = (e) => {
   };
 };
 
+const saveWeatherCard = () => {
+  $(document).on('click', '.saveWeatherCard', (e) => {
+    const thisWeatherCard = $(e.target).closest('weatherCard'),
+    const weatherCardToAdd = {
+      icon: weatherCardToAdd.find('img'),
+      isScary:
+
+    };
+  });
+};
+
 module.exports = {
   initEvents,
 };

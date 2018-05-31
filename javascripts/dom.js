@@ -7,7 +7,7 @@ const createTile = (data) => {
   const myTempCelsius = convert.convertC(data.main.temp);
 
   myString += `<div class="col-sm-2 col-md-2">`;
-  myString += `<div class="thumbnail">`;
+  myString += `<div class="thumbnail weatherCard">`;
   myString +=   `<img src="https://openweathermap.org/img/w/${weatherIcon}.png" alt="${data.weather[0].main}">`;
   myString +=   `<button type="button" class="btn btn-default btn-lg scary-btn" title="Too scary for me">
   <img src="/images/scared.png" class="scared-icon"></button>`;
