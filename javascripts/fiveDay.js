@@ -35,6 +35,8 @@ const createFiveDayForcast = (dataArray) => {
       myString += `<div class="col-sm-2 col-md-2">`;
       myString += `<div class="thumbnail">`;
       myString +=   `<img src="https://openweathermap.org/img/w/${weatherIcon}.png" alt="${data.weather[0].main}">`;
+      myString +=   `<button type="button" class="btn btn-default btn-lg">
+  <img src="/images/scared.png" class="scared-icon"></button>`;
       myString +=   `<div class="caption">`;
       myString +=     `<h3>${dataArray.city.name}</h3>`;
       myString +=     `<p>${day}</p>`;
@@ -60,7 +62,7 @@ const createFiveDayForcast = (dataArray) => {
 };
 
 const printToDom = (dataString) => {
-  $('#weather-display-container').append(dataString);
+  $('#weather-display-container').html(dataString);
 };
 
 module.exports = {

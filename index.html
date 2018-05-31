@@ -32,8 +32,22 @@
         </span>
       </div><!-- /input-group -->
   </div>
-  <div id="weather-display-container" class="col-md-8 col-md-offset-2">
+  <div id="button-container" class="hide">
+    <button id="extended-3day-link" type="button" class="btn btn-default">View 3 day forcast</button>
+    <button id="extended-forcast-link" type="button" class="btn btn-default">View 5 day forcast</button>
   </div>
+  <div id="single-weather-stuff" class="hide">
+    <h1>Current Weather</h1>
+    <div id="current-weather-container"></div>
+  </div>
+  <div id="extended-weather-stuff" class="hide">
+    <h1>Extended Forcast</h1>
+    <div id="weather-display-container">
+    </div>
+  </div>
+
+
+  <!-- SCRIPTS -->
   <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
