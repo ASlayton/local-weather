@@ -3,6 +3,7 @@ const convert = require('./convert');
 const fiveDay = require('./fiveDay');
 const threeDay = require('./threeDay');
 const scary = require('./scary');
+const firebaseApi = require('./firebaseConfig');
 
 const initEvents = () => {
   $('#toggle-one').bootstrapToggle({
@@ -25,8 +26,8 @@ const initEvents = () => {
       threeDay.showMoreResults($('#zip-input').val());
     } else if ($(e.target).hasClass('scary-btn')) {
       scary.saveScary(e);
-    } else if ($(e.target).hasClass('save=btn')) {
-      saveWeatherCard();
+    } else if ($(e.target).hasClass('save-btn')) {
+      saveWeatherCardEvent(e);
     };
   });
 };
@@ -39,24 +40,31 @@ const keyTest = (e) => {
   };
 };
 
-const saveWeatherCard = () => {
-  $(document).on('click', '.saveWeatherCard', (e) => {
-    let scaryElement = false;
-    if ($(e.target).hasClass('scary')) {
-      scaryElement = true;
-    };
-    const thisWeatherCard = $(e.target).closest('weatherCard');
-    const weatherCardToAdd = {
-      icon: thisWeatherCard.find('img.weather-icon'),
-      isScary: scaryElement,
-      weatherStatus: thisWeatherCard.find('.weather-status').text();
-
-    };
-    console.log(weatherCardToAdd);
-  });
+const saveWeatherCardEvent = (e) => {
+  let scaryElement = false;
+  const thisWeatherCard = $(e.target).closest('.weatherCard');
+  if (thisWeatherCard.hasClass('scary')) {
+    scaryElement = true;
+  };
+  const weatherCardToAdd = {
+    icon: thisWeatherCard.find('.weather-icon').data('icon'),
+    isScary: scaryElement,
+    city: thisWeatherCard.find('.city').text(),
+    weatherStatus: thisWeatherCard.find('.weather-status').text(),
+    tempCel: thisWeatherCard.find('.farenheit').text(),
+    tempFar: thisWeatherCard.find('.celsius').text(),
+    humidity: thisWeatherCard.find('.humidity').text(),
+    pressure: thisWeatherCard.find('.pressure').text(),
+    wind: thisWeatherCard.find('.wind').text(),
+  };
+  firebaseApi.saveForecast(weatherCardToAdd)
+    .then(() => {
+    })
+    .catch((error) => {
+      console.error('Error in saving card: ', error);
+    });
 };
 
 module.exports = {
   initEvents,
-  saveWeatherCard,
 };
