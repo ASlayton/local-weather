@@ -8,11 +8,13 @@ const createTile = (data) => {
 
   myString += `<div class="col-sm-2 col-md-2">`;
   myString += `<div class="thumbnail weatherCard">`;
-  myString +=   `<img src="https://openweathermap.org/img/w/${weatherIcon}.png" alt="${data.weather[0].main}">`;
+  myString +=   `<img src="https://openweathermap.org/img/w/${weatherIcon}.png" alt="${data.weather[0].main}" class="weather-icon">`;
   myString +=   `<button type="button" class="btn btn-default btn-lg scary-btn" title="Too scary for me">
   <img src="/images/scared.png" class="scared-icon"></button>`;
+  myString +=  `<button type="button" class="btn btn-default btn-lg save-btn" title="Save this forcast">
+  <span class="glyphicon glyphicon-save"></span></button>`;
   myString +=   `<div class="caption">`;
-  myString +=     `<h3>${data.name}</h3>`;
+  myString +=     `<h3 class="weather-status">${data.name}</h3>`;
   myString +=     `<p>Current</p>`;
   myString +=     `<p>${data.weather[0].main}</p>`;
 

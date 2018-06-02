@@ -24,7 +24,9 @@ const initEvents = () => {
     } else if (e.target.id === 'extended-3day-link') {
       threeDay.showMoreResults($('#zip-input').val());
     } else if ($(e.target).hasClass('scary-btn')) {
-      scary.saveScary();
+      scary.saveScary(e);
+    } else if ($(e.target).hasClass('save=btn')) {
+      saveWeatherCard();
     };
   });
 };
@@ -39,15 +41,22 @@ const keyTest = (e) => {
 
 const saveWeatherCard = () => {
   $(document).on('click', '.saveWeatherCard', (e) => {
-    const thisWeatherCard = $(e.target).closest('weatherCard'),
+    let scaryElement = false;
+    if ($(e.target).hasClass('scary')) {
+      scaryElement = true;
+    };
+    const thisWeatherCard = $(e.target).closest('weatherCard');
     const weatherCardToAdd = {
-      icon: weatherCardToAdd.find('img'),
-      isScary:
+      icon: thisWeatherCard.find('img.weather-icon'),
+      isScary: scaryElement,
+      weatherStatus: thisWeatherCard.find('.weather-status').text();
 
     };
+    console.log(weatherCardToAdd);
   });
 };
 
 module.exports = {
   initEvents,
+  saveWeatherCard,
 };
