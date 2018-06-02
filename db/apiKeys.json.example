@@ -1,15 +1,15 @@
 {
   "apiKeys": {
-    "weather": {
+    "tmdb": {
       "apiKey": ""
-  }
-  },
-  "firebaseKeys": {
-  "apiKey": "",
-  "authDomain": "",
-  "databaseURL": "",
-  "projectId": "",
-  "storageBucket": "",
-  "messagingSenderId": ""
-  }
+    },
+    "firebase": {
+      "apiKey": "",
+      "authDomain": "",
+      "databaseURL": "",
+      "projectId": "",
+      "storageBucket": "",
+      "messagingSenderId": ""
+      }
+    }
 }

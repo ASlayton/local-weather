@@ -12,3 +12,8 @@ body {
 .scared-icon {
   height: 25px;
 }
+
+.scary {
+  background-color: maroon;
+  color: yellow;
+}
