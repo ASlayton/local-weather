@@ -24,10 +24,13 @@ const initEvents = () => {
       $('#extended-weather-stuff').removeClass('hide');
     } else if (e.target.id === 'extended-3day-link') {
       threeDay.showMoreResults($('#zip-input').val());
+      $('#extended-weather-stuff').removeClass('hide');
     } else if ($(e.target).hasClass('scary-btn')) {
       scary.saveScary(e);
     } else if ($(e.target).hasClass('save-btn')) {
       saveWeatherCardEvent(e);
+    } else if (e.target.id === 'view-saved-btn') {
+      getSavedCards();
     };
   });
 };
@@ -38,6 +41,16 @@ const keyTest = (e) => {
     $('#single-weather-stuff').removeClass('hide');
     $('#button-container').removeClass('hide');
   };
+};
+
+const getSavedCards = () => {
+  firebaseApi.getSavedCards()
+    .then((cardsArray) => {
+      fiveDay.createFiveDayForcast(cardsArray, '');
+    })
+    .catch((error) => {
+      console.log('There was an error in retriving saved Cards', error);
+    });
 };
 
 const saveWeatherCardEvent = (e) => {

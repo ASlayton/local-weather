@@ -13,7 +13,7 @@ const getKey = () => {
 const showResults = (zipNum) => {
   searchWeather(zipNum)
     .then((result) => {
-      dom.createTile(result);
+      dom.createTile(result, '#current-weather-container');
     })
     .catch((err) => {
       console.error('Errors have occured', err);

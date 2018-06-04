@@ -1,6 +1,6 @@
 const convert = require('./convert');
 
-const createTile = (data) => {
+const createTile = (data, placeToPrint) => {
   let myString = '';
   const weatherIcon = data.weather[0].icon;
   const myTempFarenheit = convert.convertF(data.main.temp);
@@ -15,7 +15,7 @@ const createTile = (data) => {
   <span class="glyphicon glyphicon-save"></span></button>`;
   myString +=   `<div class="caption">`;
   myString +=     `<h3 class="city">${data.name}</h3>`;
-  myString +=     `<p>Current</p>`;
+  myString +=     `<p class="day">Current</p>`;
   myString +=     `<p class="weather-status">${data.weather[0].main}</p>`;
 
   if ($('#toggle-one').prop('checked')) {
@@ -32,13 +32,14 @@ const createTile = (data) => {
   myString += `</div>`;
   myString += `</div>`;
 
-  printToDom(myString);
+  printToDom(myString, placeToPrint);
 };
 
-const printToDom = (dataString) => {
-  $('#current-weather-container').html(dataString);
+const printToDom = (dataString, placeToPrint) => {
+  $(placeToPrint).html(dataString);
 };
 
 module.exports = {
   createTile,
+  printToDom,
 };
