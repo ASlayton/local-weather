@@ -22,15 +22,22 @@ const saveForecast = (weatherCard) => {
 
 const getSavedCards = () => {
   return new Promise((resolve, reject) => {
+    const allWeatherCardsArray = [];
     $.ajax({
-      method: 'POST',
-      url: `${firebaseConfig.data}/weather.json`,
+      method: 'GET',
+      url: `${firebaseConfig.databaseURL}/weather.json`,
     })
-      .done(() => {
-
+      .done((allWeatherCards) => {
+        if (allWeatherCards !== null) {
+          Object.keys(allWeatherCards).forEach((fbKey) => {
+            allWeatherCards[fbKey].id = fbKey;
+            allWeatherCardsArray.push(allWeatherCards[fbKey]);
+          });
+        };
+        resolve(allWeatherCardsArray);
       })
       .fail((err) => {
-        console.error('I have no idea what I am doing');
+        reject(err);
       });
   });
 };

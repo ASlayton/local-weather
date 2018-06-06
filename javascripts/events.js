@@ -30,7 +30,7 @@ const initEvents = () => {
     } else if ($(e.target).hasClass('save-btn')) {
       saveWeatherCardEvent(e);
     } else if (e.target.id === 'view-saved-btn') {
-      getSavedCards();
+      returnSavedCards();
     };
   });
 };
@@ -43,10 +43,10 @@ const keyTest = (e) => {
   };
 };
 
-const getSavedCards = () => {
+const returnSavedCards = () => {
   firebaseApi.getSavedCards()
     .then((cardsArray) => {
-      fiveDay.createFiveDayForcast(cardsArray, '');
+      console.log('Cards Array: ', cardsArray);
     })
     .catch((error) => {
       console.log('There was an error in retriving saved Cards', error);
@@ -59,6 +59,7 @@ const saveWeatherCardEvent = (e) => {
   if (thisWeatherCard.hasClass('scary')) {
     scaryElement = true;
   };
+  console.log(thisWeatherCard.find('.weather-icon').data('icon'));
   const weatherCardToAdd = {
     icon: thisWeatherCard.find('.weather-icon').data('icon'),
     isScary: scaryElement,
