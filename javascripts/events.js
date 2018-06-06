@@ -24,10 +24,13 @@ const initEvents = () => {
       $('#extended-weather-stuff').removeClass('hide');
     } else if (e.target.id === 'extended-3day-link') {
       threeDay.showMoreResults($('#zip-input').val());
+      $('#extended-weather-stuff').removeClass('hide');
     } else if ($(e.target).hasClass('scary-btn')) {
       scary.saveScary(e);
     } else if ($(e.target).hasClass('save-btn')) {
       saveWeatherCardEvent(e);
+    } else if (e.target.id === 'view-saved-btn') {
+      returnSavedCards();
     };
   });
 };
@@ -40,12 +43,23 @@ const keyTest = (e) => {
   };
 };
 
+const returnSavedCards = () => {
+  firebaseApi.getSavedCards()
+    .then((cardsArray) => {
+      console.log('Cards Array: ', cardsArray);
+    })
+    .catch((error) => {
+      console.log('There was an error in retriving saved Cards', error);
+    });
+};
+
 const saveWeatherCardEvent = (e) => {
   let scaryElement = false;
   const thisWeatherCard = $(e.target).closest('.weatherCard');
   if (thisWeatherCard.hasClass('scary')) {
     scaryElement = true;
   };
+  console.log(thisWeatherCard.find('.weather-icon').data('icon'));
   const weatherCardToAdd = {
     icon: thisWeatherCard.find('.weather-icon').data('icon'),
     isScary: scaryElement,

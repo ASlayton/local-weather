@@ -20,7 +20,30 @@ const saveForecast = (weatherCard) => {
   });
 };
 
+const getSavedCards = () => {
+  return new Promise((resolve, reject) => {
+    const allWeatherCardsArray = [];
+    $.ajax({
+      method: 'GET',
+      url: `${firebaseConfig.databaseURL}/weather.json`,
+    })
+      .done((allWeatherCards) => {
+        if (allWeatherCards !== null) {
+          Object.keys(allWeatherCards).forEach((fbKey) => {
+            allWeatherCards[fbKey].id = fbKey;
+            allWeatherCardsArray.push(allWeatherCards[fbKey]);
+          });
+        };
+        resolve(allWeatherCardsArray);
+      })
+      .fail((err) => {
+        reject(err);
+      });
+  });
+};
+
 module.exports = {
   setConfig,
   saveForecast,
+  getSavedCards,
 };

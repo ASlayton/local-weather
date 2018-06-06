@@ -1,10 +1,11 @@
 const convert = require('./convert');
 const key = require('./weatherAPI');
+const dom = require('./dom');
 
 const showMoreResults = (zipNum) => {
   search3DayWeather(zipNum)
     .then((result) => {
-      createThreeDayForcast(result);
+      createThreeDayForcast(result, '#extended-weather-stuff');
     })
     .catch((err) => {
       console.error('Errors have occured', err);
@@ -23,7 +24,7 @@ const search3DayWeather = (txt) => {
   });
 };
 
-const createThreeDayForcast = (dataArray) => {
+const createThreeDayForcast = (dataArray, placeToPutIt) => {
   let myString = '';
   let countIt = 0;
   for (let i = 0; i < dataArray.list.length; i++) {
@@ -38,8 +39,10 @@ const createThreeDayForcast = (dataArray) => {
         myString += `<div class="col-sm-2 col-md-2">`;
         myString += `<div class="thumbnail">`;
         myString +=   `<img src="https://openweathermap.org/img/w/${weatherIcon}.png" alt="${dataArray.list[i].weather[0].main}">`;
-        myString +=   `<button type="button" class="btn btn-default btn-lg">
-  <img src="/images/scared.png" class="scared-icon"></button>`;
+        myString +=   `<button type="button" class="btn btn-danger btn-lg scary-btn" title="Too scary for me">
+<img src="/images/scared.png" class="scared-icon"></button>`;
+        myString +=  `<button type="button" class="btn btn-default btn-lg save-btn" title="Save this forcast">
+<span class="glyphicon glyphicon-save"></span></button>`;
         myString +=   `<div class="caption">`;
         myString +=     `<h3>${dataArray.city.name}</h3>`;
         myString +=     `<p>${day}</p>`;
@@ -61,11 +64,7 @@ const createThreeDayForcast = (dataArray) => {
       };
     };
   };
-  printToDom(myString);
-};
-
-const printToDom = (dataString) => {
-  $('#weather-display-container').html(dataString);
+  dom.printToDom(myString, placeToPutIt);
 };
 
 module.exports = {
