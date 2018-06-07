@@ -1,7 +1,16 @@
 let firebaseConfig = {};
+let userID = '';
 
 const setConfig = (fbConfig) => {
   firebaseConfig = fbConfig;
+};
+
+const setUID = (userUID) => {
+  userID = userUID;
+};
+
+const getUID = () => {
+  return userID;
 };
 
 const saveForecast = (weatherCard) => {
@@ -46,4 +55,6 @@ module.exports = {
   setConfig,
   saveForecast,
   getSavedCards,
+  setUID,
+  getUID,
 };

@@ -61,7 +61,7 @@
         </div>
         <div class="form-group">
           <div class="col-sm-offset-2 col-sm-10">
-            <a href="#" id="register-link"><strong>Need to Register?</strong></a>
+            <a href="#" id="register-link"><strong>Register</strong></a>
           </div>
         </div>
         <div class="form-group">
@@ -105,7 +105,7 @@
     </div>
   </div>
 <!-- SEARCH BAR -->
-  <div class="input-group col-lg-6 col-lg-offset-3 hide">
+  <div class="input-group col-lg-6 col-lg-offset-3 hide" id="search-container">
     <div class="input-group">
         <input type="text" class="form-control" placeholder="Enter Zipcode" id="zip-input">
           <button class="btn btn-default" type="button" id="go-btn">Go!</button>
@@ -115,12 +115,15 @@
 
 
 <!-- BUTTON CONTAINER -->
-  <div id="button-container" class="hide">
+  <div id="button-container" class="hide text-center">
     <button id="extended-3day-link" type="button" class="btn btn-default">View 3 day forcast</button>
     <button id="extended-forcast-link" type="button" class="btn btn-default">View 5 day forcast</button>
   </div>
 
   <!-- PRINT WEATHER STUFF HERE -->
+  <div>
+    <h1 id="city-name" class="hide"></h1>
+  </div>
   <div id="single-weather-stuff" class="hide">
     <h1>Current Weather</h1>
     <div id="current-weather-container"></div>

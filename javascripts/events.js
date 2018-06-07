@@ -1,6 +1,7 @@
 const zipValidator = require('./zipcode');
 const convert = require('./convert');
 const firebaseApi = require('./firebaseAPI');
+const auth = require('./auth');
 
 const initEvents = () => {
   $('#toggle-one').bootstrapToggle({
@@ -11,6 +12,7 @@ const initEvents = () => {
     convert.convertExisting();
   });
   $('#zip-input').on('keypress', keyTest);
+  auth.authEvents();
   $('body').on('click', (e) => {
     if (e.target.id === 'go-btn') {
       zipValidator();

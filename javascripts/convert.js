@@ -10,11 +10,11 @@ const convertC = (temp) => {
 
 const convertExisting = () => {
   if ($('#toggle-one').prop('checked')) {
-    $('.farenheit').removeClass('hide');
-    $('.celsius').addClass('hide');
+    $('.farenheit').closest('.currentTemp').removeClass('hide');
+    $('.celsius').closest('.currentTemp').addClass('hide');
   } else {
-    $('.celsius').removeClass('hide');
-    $('.farenheit').addClass('hide');
+    $('.celsius').closest('.currentTemp').removeClass('hide');
+    $('.farenheit').closest('.currentTemp').addClass('hide');
   };
 };
 
