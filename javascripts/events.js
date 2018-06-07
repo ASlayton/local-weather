@@ -1,9 +1,7 @@
 const zipValidator = require('./zipcode');
 const convert = require('./convert');
-const fiveDay = require('./fiveDay');
-const threeDay = require('./threeDay');
-const scary = require('./scary');
-const firebaseApi = require('./firebaseConfig');
+const firebaseApi = require('./firebaseAPI');
+const auth = require('./auth');
 
 const initEvents = () => {
   $('#toggle-one').bootstrapToggle({
@@ -14,19 +12,18 @@ const initEvents = () => {
     convert.convertExisting();
   });
   $('#zip-input').on('keypress', keyTest);
+  auth.authEvents();
   $('body').on('click', (e) => {
     if (e.target.id === 'go-btn') {
       zipValidator();
       $('#single-weather-stuff').removeClass('hide');
       $('#button-container').removeClass('hide');
     } else if (e.target.id === 'extended-forcast-link') {
-      fiveDay.showMoreResults($('#zip-input').val());
       $('#extended-weather-stuff').removeClass('hide');
     } else if (e.target.id === 'extended-3day-link') {
-      threeDay.showMoreResults($('#zip-input').val());
       $('#extended-weather-stuff').removeClass('hide');
     } else if ($(e.target).hasClass('scary-btn')) {
-      scary.saveScary(e);
+
     } else if ($(e.target).hasClass('save-btn')) {
       saveWeatherCardEvent(e);
     } else if (e.target.id === 'view-saved-btn') {

@@ -28,7 +28,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right" id="option-toolbar">
             <li><button class="btn btn-default" id="login-btn">Log In</button></li>
-            <li><button class="btn btn-default" id="logout-btn">Log Out</button></li>
+            <li><button class="btn btn-default hide" id="logout-btn">Log Out</button></li>
             <li><button class="btn btn-default" id="view-saved-btn">View Saved</button></li>
             <li><input type="checkbox" data-toggle="toggle" data-on="Enabled" data-off="Disabled" id="toggle-one"></li>
           </ul>
@@ -36,22 +36,94 @@
       </div><!-- /.container-fluid -->
     </nav>
 
+<!-- AUTHENTICATION AND REGISTRATION -->
 
+<div id="authScreen">
+    <div id="login-form">
+      <h1 class="text-center">Sign In</h1>
+      <form class="form-horizontal col-sm-4 col-sm-offset-4 col-xs-8 col-xs-offset-2">
+        <div id="signin-error" class="hide alert alert-danger" role="alert">
+          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          <span class="sr-only">Error:</span>
+          <span id="signin-error-msg"></span>
+        </div>
+        <div class="form-group">
+          <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+          <div class="col-sm-10">
+            <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputPassword" class="col-sm-2 control-label">Password</label>
+          <div class="col-sm-10">
+            <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <a href="#" id="register-link"><strong>Register</strong></a>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" id="signin-btn" class="btn btn-default">Sign in</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div id="registration-form" class="hide">
+      <h1 class="text-center">Registration</h1>
+      <form class="form-horizontal col-sm-4 col-sm-offset-4 col-xs-8 col-xs-offset-2">
+        <div id="register-error" class="hide alert alert-danger" role="alert">
+          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          <span class="sr-only">Error:</span>
+          <span id="register-error-msg"></span>
+        </div>
+        <div class="form-group">
+          <label for="registerEmail" class="col-sm-2 control-label">Email</label>
+          <div class="col-sm-10">
+            <input type="email" class="form-control" id="registerEmail" placeholder="Email">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="registerPassword" class="col-sm-2 control-label">Password</label>
+          <div class="col-sm-10">
+            <input type="password" class="form-control" id="registerPassword" placeholder="Password">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <a href="#" id="signin-link">Go to Login</a>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" id="register-btn" class="btn btn-default">Register</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
 <!-- SEARCH BAR -->
-  <div class="input-group col-lg-6 col-lg-offset-3">
+  <div class="input-group col-lg-6 col-lg-offset-3 hide" id="search-container">
     <div class="input-group">
         <input type="text" class="form-control" placeholder="Enter Zipcode" id="zip-input">
           <button class="btn btn-default" type="button" id="go-btn">Go!</button>
         </span>
       </div><!-- /input-group -->
   </div>
+
+
 <!-- BUTTON CONTAINER -->
-  <div id="button-container" class="hide">
+  <div id="button-container" class="hide text-center">
     <button id="extended-3day-link" type="button" class="btn btn-default">View 3 day forcast</button>
     <button id="extended-forcast-link" type="button" class="btn btn-default">View 5 day forcast</button>
   </div>
 
   <!-- PRINT WEATHER STUFF HERE -->
+  <div>
+    <h1 id="city-name" class="hide"></h1>
+  </div>
   <div id="single-weather-stuff" class="hide">
     <h1>Current Weather</h1>
     <div id="current-weather-container"></div>

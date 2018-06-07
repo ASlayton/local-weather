@@ -22,3 +22,12 @@ body {
   margin-top: 7px;
   margin-left: 2px;
 }
+
+.weather-icon {
+  width: 100px;
+}
+
+.weather-status {
+  font-size: 1.5em;
+  color: black;
+}

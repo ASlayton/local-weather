@@ -1,9 +1,9 @@
 const events = require('./events');
-const promises = require('./promise');
+const apiKeys = require('./apiKeys');
 
 const initializer = () => {
   events.initEvents();
-  promises.retrieveKeys();
+  apiKeys.retrieveKeys();
 };
 
 initializer();
