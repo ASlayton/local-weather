@@ -31,3 +31,13 @@ body {
   font-size: 1.5em;
   color: black;
 }
+
+#city-name {
+  color: #d5c3f0;
+  font-size: 5em;
+}
+
+#current-weather-container {
+  border: 2px yellow solid;
+  height: 300px;
+}

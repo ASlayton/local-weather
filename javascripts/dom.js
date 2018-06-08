@@ -6,7 +6,7 @@ const createTile = (data, placeToPrint) => {
   const myTempFarenheit = convert.convertF(data.main.temp);
   const myTempCelsius = convert.convertC(data.main.temp);
 
-  myString += `<div class="col-sm-4 col-md-4">`;
+  myString += `<div col-md-10 col-md-offset-1>`;
   myString += `<div class="thumbnail weatherCard">`;
   myString += `<div>`;
   myString +=   `<img src="https://openweathermap.org/img/w/${weatherIcon}.png" alt="${data.weather[0].main}" data-icon="${weatherIcon}" class="weather-icon col-md-4">`;
