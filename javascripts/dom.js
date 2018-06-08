@@ -37,6 +37,41 @@ const createTile = (data, placeToPrint) => {
   printToDom(`${data.name}`, `#city-name`);
 };
 
+const printSavedCards = (dataArray, placeToPutIt) => {
+  let myString = '';
+  dataArray.forEach((data) => {
+    myString += `<div col-md-10 col-md-offset-1>`;
+    if (data.scary === true) {
+      myString += `<div class="thumbnail weatherCard scary">`;
+    } else {
+      myString += `<div class="thumbnail weatherCard">`;
+    };
+    myString += `<div class="thumbnail weatherCard">`;
+    myString += `<div>`;
+    myString += `<h1>${data.city}</h1>`;
+    myString +=   `<img src="https://openweathermap.org/img/w/${data.icon}.png" alt="${data.weatherStatus}" data-icon="${data.icon}" class="weather-icon col-md-4">`;
+    myString +=     `<p class="weather-status col-md-4">${data.weatherStatus}</p>`;
+    myString +=   `<span class="delete-card">X</span>`;
+    myString += `</div>`;
+    myString +=   `<div class="caption">`;
+
+    if ($('#toggle-one').prop('checked')) {
+      myString +=     `<p class="currentTemp">Temperature: <span class="farenheit">${data.tempFar}</span>&degF</p>`;
+      myString +=     `<p class="currentTemp hide">Temperature: <span class="celsius">${data.tempCel}</span>&degC</p>`;
+    } else {
+      myString +=     `<p class="currentTemp hide">Temperature: <span class="farenheit">${data.tempFar}</span> &degF</p>`;
+      myString +=     `<p class="currentTemp">Temperature: <span class="celsius">${data.tempCel}</span> &degC</p>`;
+    };
+    myString +=       `<p>Humidity: <span  class="humidity">${data.humidity}</span>%</p>`;
+    myString +=     `<p>Pressure: <span  class="pressure">${data.pressure}</span> hPa</p>`;
+    myString +=     `<p>Wind Speed: <span  class="wind">${data.wind}</span> meters/sec</p>`;
+    myString +=   `</div>`;
+    myString += `</div>`;
+    myString += `</div>`;
+  });
+  printToDom(myString, placeToPutIt);
+};
+
 const printToDom = (myString, placeToPutIt) => {
   $(placeToPutIt).html(myString);
 };
@@ -44,4 +79,5 @@ const printToDom = (myString, placeToPutIt) => {
 module.exports = {
   createTile,
   printToDom,
+  printSavedCards,
 };
