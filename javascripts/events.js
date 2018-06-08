@@ -1,7 +1,8 @@
-const zipValidator = require('./zipcode');
+const zip = require('./zipcode');
 const convert = require('./convert');
 const firebaseApi = require('./firebaseAPI');
 const auth = require('./auth');
+const extWeather = require('./extendedWeather');
 
 const initEvents = () => {
   $('#toggle-one').bootstrapToggle({
@@ -15,12 +16,14 @@ const initEvents = () => {
   auth.authEvents();
   $('body').on('click', (e) => {
     if (e.target.id === 'go-btn') {
-      zipValidator();
+      zip.zipValidator();
       $('#single-weather-stuff').removeClass('hide');
       $('#button-container').removeClass('hide');
     } else if (e.target.id === 'extended-forcast-link') {
       $('#extended-weather-stuff').removeClass('hide');
+      extWeather.showMoreResults(`${zip.getZip()}`, 5);
     } else if (e.target.id === 'extended-3day-link') {
+      extWeather.showMoreResults(`${zip.getZip()}`, 3);
       $('#extended-weather-stuff').removeClass('hide');
     } else if ($(e.target).hasClass('scary-btn')) {
 
@@ -34,7 +37,7 @@ const initEvents = () => {
 
 const keyTest = (e) => {
   if (e.key === 'Enter') {
-    zipValidator();
+    zip.zipValidator();
     $('#single-weather-stuff').removeClass('hide');
     $('#button-container').removeClass('hide');
   };
