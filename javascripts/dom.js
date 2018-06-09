@@ -42,7 +42,7 @@ const printSavedCards = (dataArray, placeToPutIt) => {
   dataArray.forEach((data) => {
     myString += `<div col-md-10 col-md-offset-1>`;
     if (data.scary === true) {
-      myString += `<div class="thumbnail weatherCard scary">`;
+      myString += `<div class="thumbnail weatherCard scary" data-firebase-id="${data.id}">`;
     } else {
       myString += `<div class="thumbnail weatherCard">`;
     };

@@ -4,7 +4,7 @@ const firebaseApi = require('./firebaseAPI');
 const auth = require('./auth');
 const extWeather = require('./extendedWeather');
 const dom = require('./dom');
-
+const deleteCrd = require('./deleteCard');
 const initEvents = () => {
   $('#toggle-one').bootstrapToggle({
     on: '&deg;F',
@@ -16,7 +16,6 @@ const initEvents = () => {
   $('#zip-input').on('keypress', keyTest);
   auth.authEvents();
   $('body').on('click', (e) => {
-    console.log(e.target.id);
     if (e.target.id === 'go-btn') {
       zip.zipValidator();
       $('#single-weather-stuff').removeClass('hide');
@@ -33,6 +32,8 @@ const initEvents = () => {
       saveWeatherCardEvent(e);
     } else if (e.target.id === 'view-saved-btn') {
       returnSavedCards();
+    } else if ($(e.target).hasClass('delete-card')) {
+      deleteCrd.deleteCard(e);
     };
   });
 };
@@ -49,6 +50,7 @@ const returnSavedCards = () => {
   firebaseApi.getSavedCards()
     .then((cardsArray) => {
       dom.printSavedCards(cardsArray, '#weather-display-container');
+      $('#weather-display-container').removeClass('hide');
     })
     .catch((error) => {
       console.log('There was an error in retrieving saved Cards', error);
