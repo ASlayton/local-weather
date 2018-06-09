@@ -5,6 +5,7 @@ const auth = require('./auth');
 const extWeather = require('./extendedWeather');
 const dom = require('./dom');
 const deleteCrd = require('./deleteCard');
+
 const initEvents = () => {
   $('#toggle-one').bootstrapToggle({
     on: '&deg;F',

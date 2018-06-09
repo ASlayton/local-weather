@@ -7,6 +7,7 @@ const setConfig = (fbConfig) => {
 
 const setUID = (userUID) => {
   userID = userUID;
+  console.log(userID);
 };
 
 const getUID = () => {
