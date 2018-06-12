@@ -34,7 +34,7 @@ const saveForecast = (weatherCard) => {
 const returnSavedCards = () => {
   getSavedCards()
     .then((cardsArray) => {
-      dom.printSavedCards(cardsArray, '#weather-display-container');
+      dom.printSavedCards(cardsArray, '#saved-weather-cards');
       // $('#weather-display-container').removeClass('hide');
     })
     .catch((error) => {

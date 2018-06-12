@@ -51,6 +51,8 @@ const printSavedCards = (dataArray, placeToPutIt) => {
     myString +=   `<img src="https://openweathermap.org/img/w/${data.icon}.png" alt="${data.weatherStatus}" data-icon="${data.icon}" class="weather-icon col-md-4">`;
     myString +=     `<p class="weather-status col-md-4">${data.weatherStatus}</p>`;
     myString += `<button type="button" class="btn btn-default btn-lg delete-card" title="Delete Me"></button>`;
+    myString +=   `<button type="button" class="btn btn-danger btn-lg scary-btn" title="Too scary for me">
+  <img src="/images/scared.png" class="scared-icon"></button>`;
     myString += `</div>`;
     myString +=   `<div class="caption">`;
 

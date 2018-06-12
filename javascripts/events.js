@@ -31,6 +31,8 @@ const initEvents = () => {
       saveWeatherCardEvent(e);
     } else if (e.target.id === 'view-saved-btn') {
       firebaseApi.returnSavedCards();
+      $('extended-weather-stuff').addClass('hide');
+      $('#saved-weather-cards-container').removeClass('hide');
     } else if ($(e.target).hasClass('delete-card')) {
       firebaseApi.deleteCard(e);
     };
