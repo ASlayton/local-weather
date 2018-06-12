@@ -7,7 +7,7 @@ const createTile = (data, placeToPrint) => {
   const myTempCelsius = convert.convertC(data.main.temp);
 
   myString += `<div col-md-10 col-md-offset-1>`;
-  myString += `<div class="thumbnail weatherCard">`;
+  myString += `<div class="thumbnail weatherCard" data-firebase-id="${data.id}">`;
   myString += `<div>`;
   myString +=   `<img src="https://openweathermap.org/img/w/${weatherIcon}.png" alt="${data.weather[0].main}" data-icon="${weatherIcon}" class="weather-icon col-md-4">`;
   myString +=     `<p class="weather-status col-md-4">${data.weather[0].main}</p>`;
@@ -42,16 +42,15 @@ const printSavedCards = (dataArray, placeToPutIt) => {
   dataArray.forEach((data) => {
     myString += `<div col-md-10 col-md-offset-1>`;
     if (data.scary === true) {
-      myString += `<div class="thumbnail weatherCard scary">`;
+      myString += `<div class="thumbnail weatherCard scary" data-firebase-id="${data.id}">`;
     } else {
-      myString += `<div class="thumbnail weatherCard">`;
+      myString += `<div class="thumbnail weatherCard" data-firebase-id="${data.id}">`;
     };
-    myString += `<div class="thumbnail weatherCard">`;
     myString += `<div>`;
     myString += `<h1>${data.city}</h1>`;
     myString +=   `<img src="https://openweathermap.org/img/w/${data.icon}.png" alt="${data.weatherStatus}" data-icon="${data.icon}" class="weather-icon col-md-4">`;
     myString +=     `<p class="weather-status col-md-4">${data.weatherStatus}</p>`;
-    myString +=   `<span class="delete-card">X</span>`;
+    myString += `<button type="button" class="btn btn-default btn-lg delete-card" title="Delete Me"></button>`;
     myString += `</div>`;
     myString +=   `<div class="caption">`;
 

@@ -53,7 +53,7 @@ const authEvents = () => {
       .then(() => {
         $('#login-form').removeClass('hide');
         $('#logout-btn').addClass('hide');
-        $('#search-container, #single-weather-stuff, #extended-weather-stuff, #city-name').addClass('hide');
+        $('#search-container, #single-weather-stuff, #extended-weather-stuff, #city-name, #button-container').addClass('hide');
       })
       .catch((error) => {
       // An error happened.
