@@ -1,3 +1,5 @@
+const dom = require('./dom');
+
 let firebaseConfig = {};
 let userID = '';
 
@@ -7,7 +9,6 @@ const setConfig = (fbConfig) => {
 
 const setUID = (userUID) => {
   userID = userUID;
-  console.log(userID);
 };
 
 const getUID = () => {
@@ -28,6 +29,17 @@ const saveForecast = (weatherCard) => {
         reject(error);
       });
   });
+};
+
+const returnSavedCards = () => {
+  getSavedCards()
+    .then((cardsArray) => {
+      dom.printSavedCards(cardsArray, '#weather-display-container');
+      // $('#weather-display-container').removeClass('hide');
+    })
+    .catch((error) => {
+      console.log('There was an error in retrieving saved Cards', error);
+    });
 };
 
 const getSavedCards = () => {
@@ -52,10 +64,39 @@ const getSavedCards = () => {
   });
 };
 
+const deleteCard = (e) => {
+  const cardToRemove = $(e.target).closest('.weatherCard');
+  const idToRemove = cardToRemove.data('firebaseId');
+  deleteCardFromDB(idToRemove)
+    .then(() => {
+      returnSavedCards();
+    })
+    .catch((err) => {
+      console.error('Error in deleting the card'. err);
+    });
+};
+
+const deleteCardFromDB = (cardID) => {
+  return new Promise((resolve, reject) => {
+    $.ajax({
+      method: 'DELETE',
+      url: `${firebaseConfig.databaseURL}/weather/${cardID}.json`,
+    })
+      .done(() => {
+        resolve();
+      })
+      .fail((error) => {
+        reject(error);
+      });
+  });
+};
+
 module.exports = {
   setConfig,
   saveForecast,
   getSavedCards,
   setUID,
   getUID,
+  deleteCard,
+  returnSavedCards,
 };

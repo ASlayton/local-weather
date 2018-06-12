@@ -3,8 +3,6 @@ const convert = require('./convert');
 const firebaseApi = require('./firebaseAPI');
 const auth = require('./auth');
 const extWeather = require('./extendedWeather');
-const dom = require('./dom');
-const deleteCrd = require('./deleteCard');
 
 const initEvents = () => {
   $('#toggle-one').bootstrapToggle({
@@ -32,9 +30,9 @@ const initEvents = () => {
     } else if ($(e.target).hasClass('save-btn')) {
       saveWeatherCardEvent(e);
     } else if (e.target.id === 'view-saved-btn') {
-      returnSavedCards();
+      firebaseApi.returnSavedCards();
     } else if ($(e.target).hasClass('delete-card')) {
-      deleteCrd.deleteCard(e);
+      firebaseApi.deleteCard(e);
     };
   });
 };
@@ -45,17 +43,6 @@ const keyTest = (e) => {
     $('#single-weather-stuff').removeClass('hide');
     $('#button-container').removeClass('hide');
   };
-};
-
-const returnSavedCards = () => {
-  firebaseApi.getSavedCards()
-    .then((cardsArray) => {
-      dom.printSavedCards(cardsArray, '#weather-display-container');
-      $('#weather-display-container').removeClass('hide');
-    })
-    .catch((error) => {
-      console.log('There was an error in retrieving saved Cards', error);
-    });
 };
 
 const saveWeatherCardEvent = (e) => {

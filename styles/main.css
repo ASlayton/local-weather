@@ -41,3 +41,9 @@ body {
   border: 2px yellow solid;
   height: 300px;
 }
+
+.delete-card {
+  font-size: 3em;
+  font-weight: bold;
+  color: maroon;
+}
